@@ -20,6 +20,8 @@ export default function CampaignLayout({
           position: 'fixed',
           height: '100vh',
           zIndex: 100,
+          left: 0,
+          top: 0,
         }}>
           {/* Logo/Brand */}
           <div style={{
@@ -98,7 +100,7 @@ export default function CampaignLayout({
           </div>
         </div>
 
-        {/* Main Content Area - Scrollable */}
+        {/* Main Content Area */}
         <div style={{ 
           flex: 1, 
           marginLeft: '80px', // Account for fixed sidebar
@@ -116,6 +118,7 @@ export default function CampaignLayout({
             position: 'sticky',
             top: 0,
             zIndex: 50,
+            boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
           }}>
             <h1 style={{
               fontSize: '18px',
@@ -130,7 +133,7 @@ export default function CampaignLayout({
           {/* Scrollable Content Container */}
           <div style={{ 
             flex: 1,
-            padding: '40px',
+            padding: '40px 20px',
             overflow: 'auto',
           }}>
             {children}

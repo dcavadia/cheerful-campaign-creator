@@ -50,16 +50,19 @@ I've been really enjoying your content on {channel_name} and your honest gear re
       <div 
         data-step="4"
         style={{
-          width: '100%',
-          backgroundColor: '#ffffff',
-          borderRadius: '16px',
-          padding: '40px',
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-          border: '1px solid #e5e7eb',
-        }}
+            width: '100%',
+            maxWidth: '850px',
+            backgroundColor: '#ffffff',
+            borderRadius: '16px',
+            padding: '40px',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            border: '1px solid #e5e7eb',
+            boxSizing: 'border-box',
+            margin: '0 auto',
+          }}         
       >
         {/* Header */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '28px' }}>
           <h2 style={{
             fontSize: '24px',
             fontWeight: '700',
@@ -73,13 +76,14 @@ I've been really enjoying your content on {channel_name} and your honest gear re
             fontSize: '16px',
             color: '#6b7280',
             margin: 0,
+            lineHeight: '1.5',
           }}>
             Configure your email provider, accounts, and recipients to launch your campaign.
           </p>
         </div>
 
         {/* Email Provider Selection */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '28px' }}>
           <div style={{
             display: 'flex',
             gap: '16px',
@@ -96,6 +100,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                 backgroundColor: providerType === 'cheerful' ? '#faf5ff' : '#ffffff',
                 transition: 'all 0.2s ease',
                 position: 'relative',
+                boxSizing: 'border-box',
               }}
             >
               <div style={{
@@ -113,6 +118,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  flexShrink: 0,
                 }}>
                   {providerType === 'cheerful' && (
                     <div style={{
@@ -140,6 +146,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                     padding: '2px 6px',
                     borderRadius: '8px',
                     textTransform: 'uppercase',
+                    flexShrink: 0,
                   }}>
                     RECOMMENDED
                   </span>
@@ -149,6 +156,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                 fontSize: '14px',
                 color: '#6b7280',
                 margin: 0,
+                lineHeight: '1.4',
               }}>
                 Our email system with automatic optimization
               </p>
@@ -165,6 +173,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                 cursor: 'pointer',
                 backgroundColor: providerType === 'external' ? '#faf5ff' : '#ffffff',
                 transition: 'all 0.2s ease',
+                boxSizing: 'border-box',
               }}
             >
               <div style={{
@@ -182,6 +191,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                   display: 'flex',
                   alignItems: 'center',
                   justifyContent: 'center',
+                  flexShrink: 0,
                 }}>
                   {providerType === 'external' && (
                     <div style={{
@@ -205,6 +215,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                 fontSize: '14px',
                 color: '#6b7280',
                 margin: 0,
+                lineHeight: '1.4',
               }}>
                 Providers like Instantly, Mixmax, etc. Cheerful will handle replies only
               </p>
@@ -213,7 +224,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
         </div>
 
         {/* Add Connect Sending Accounts */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '28px' }}>
           <h4 style={{
             fontSize: '18px',
             fontWeight: '600',
@@ -241,6 +252,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                 borderRadius: '8px',
                 fontSize: '14px',
                 backgroundColor: '#ffffff',
+                boxSizing: 'border-box',
               }}
             />
             <span style={{
@@ -272,8 +284,14 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                 fontSize: '14px',
                 color: '#374151',
                 border: '1px solid #e5e7eb',
+                maxWidth: '100%',
+                boxSizing: 'border-box',
               }}>
-                <span>{email}</span>
+                <span style={{
+                  overflow: 'hidden',
+                  textOverflow: 'ellipsis',
+                  whiteSpace: 'nowrap',
+                }}>{email}</span>
                 <button
                   onClick={() => setConnectedEmails(prev => prev.filter((_, i) => i !== index))}
                   style={{
@@ -284,6 +302,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                     fontSize: '16px',
                     lineHeight: 1,
                     padding: 0,
+                    flexShrink: 0,
                   }}
                 >
                   ×
@@ -297,6 +316,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
+          alignItems: 'center',
         }}>
           <button
             onClick={handleBack}
@@ -345,13 +365,16 @@ I've been really enjoying your content on {channel_name} and your honest gear re
       <div 
         data-step="4"
         style={{
-          width: '100%',
-          backgroundColor: '#ffffff',
-          borderRadius: '16px',
-          padding: '60px 40px',
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-          border: '1px solid #e5e7eb',
-          textAlign: 'center',
+            width: '100%',
+            maxWidth: '850px',
+            backgroundColor: '#ffffff',
+            borderRadius: '16px',
+            padding: '60px 40px',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            border: '1px solid #e5e7eb',
+            textAlign: 'center',
+            margin: '0 auto',
+            boxSizing: 'border-box',
         }}
       >
         {/* Loading Animation */}
@@ -441,15 +464,18 @@ I've been really enjoying your content on {channel_name} and your honest gear re
         data-step="4"
         style={{
           width: '100%',
+          maxWidth: '700px',
           backgroundColor: '#ffffff',
           borderRadius: '16px',
-          padding: '40px',
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+          padding: '32px',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
           border: '1px solid #e5e7eb',
+          margin: '0 auto',
+          boxSizing: 'border-box',
         }}
       >
         {/* Header */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '28px' }}>
           <h2 style={{
             fontSize: '24px',
             fontWeight: '700',
@@ -463,13 +489,14 @@ I've been really enjoying your content on {channel_name} and your honest gear re
             fontSize: '16px',
             color: '#6b7280',
             margin: 0,
+            lineHeight: '1.5',
           }}>
             Cheerful has drafted an email for you. Feel free to edit as you please.
           </p>
         </div>
 
         {/* Email Form */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '28px' }}>
           {/* To Field */}
           <div style={{ marginBottom: '20px' }}>
             <label style={{
@@ -489,6 +516,8 @@ I've been really enjoying your content on {channel_name} and your honest gear re
               border: '1px solid #d1d5db',
               borderRadius: '8px',
               backgroundColor: '#f9fafb',
+              cursor: 'pointer',
+              boxSizing: 'border-box',
             }}>
               <span style={{ fontSize: '16px' }}>📊</span>
               <span style={{
@@ -523,6 +552,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                   border: '1px solid #d1d5db',
                   borderRadius: '8px',
                   fontSize: '14px',
+                  boxSizing: 'border-box',
                 }}
               />
               <button style={{
@@ -563,6 +593,8 @@ I've been really enjoying your content on {channel_name} and your honest gear re
               border: '1px solid #d1d5db',
               borderBottom: 'none',
               borderRadius: '8px 8px 0 0',
+              flexWrap: 'wrap',
+              boxSizing: 'border-box',
             }}>
               <button style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px', fontWeight: 'bold' }}>B</button>
               <button style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: '14px', fontStyle: 'italic' }}>I</button>
@@ -611,6 +643,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
                 fontSize: '14px',
                 fontFamily: 'inherit',
                 resize: 'vertical',
+                boxSizing: 'border-box',
               }}
             />
           </div>
@@ -620,6 +653,7 @@ I've been really enjoying your content on {channel_name} and your honest gear re
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
+          alignItems: 'center',
         }}>
           <button
             onClick={handleBack}

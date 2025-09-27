@@ -10,56 +10,91 @@ export default function CampaignCreatePage() {
   const { state } = useCampaign();
 
   return (
-    <div style={{ display: 'flex', width: '100%', maxWidth: '1200px', margin: '0 auto' }}>
-      {/* Progress Indicator - Fixed */}
+    <div style={{ 
+      display: 'flex', 
+      width: '100%',
+      minHeight: '100vh',
+      justifyContent: 'center',
+      position: 'relative',
+    }}>
+      {/* Progress Indicator - Fixed Position */}
       <div style={{ 
-        position: 'sticky', 
-        top: '0', 
-        height: 'fit-content',
-        paddingTop: '20px',
+        position: 'fixed',
+        left: '120px',
+        top: '120px',
+        zIndex: 10,
+        width: '220px',
       }}>
         <ProgressIndicator />
       </div>
 
-      {/* Content Sections */}
-      <div style={{ flex: 1 }}>
+      {/* Centered Content Area */}
+      <div style={{ 
+        width: '100%',
+        maxWidth: '1200px',
+        marginLeft: '300px', // Space for progress bar
+        marginRight: '100px',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}>
         {/* Step 1 */}
-        <div style={{ 
-          minHeight: '100vh', 
-          paddingBottom: '100px',
-          display: 'flex',
-          alignItems: 'center',
-        }}>
+        <div 
+          id="step-1"
+          style={{ 
+            width: '100%',
+            minHeight: '100vh', 
+            paddingBottom: '100px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Step1Content />
         </div>
 
         {/* Step 2 */}
-        <div style={{ 
-          minHeight: '100vh',
-          paddingBottom: '100px', 
-          display: 'flex',
-          alignItems: 'center',
-        }}>
+        <div 
+          id="step-2"
+          style={{ 
+            width: '100%',
+            minHeight: '100vh',
+            paddingBottom: '100px', 
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Step2Content />
         </div>
 
         {/* Step 3 */}
-        <div style={{ 
-          minHeight: '100vh',
-          paddingBottom: '100px',
-          display: 'flex',
-          alignItems: 'center',
-        }}>
+        <div 
+          id="step-3"
+          style={{ 
+            width: '100%',
+            minHeight: '100vh',
+            paddingBottom: '100px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Step3Content />
         </div>
 
         {/* Step 4 */}
-        <div style={{ 
-          minHeight: '100vh',
-          paddingBottom: '100px',
-          display: 'flex',
-          alignItems: 'center',
-        }}>
+        <div 
+          id="step-4"
+          style={{ 
+            width: '100%',
+            minHeight: '100vh',
+            paddingBottom: '100px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+          }}
+        >
           <Step4Content />
         </div>
       </div>

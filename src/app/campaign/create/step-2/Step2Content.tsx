@@ -12,7 +12,7 @@ export default function Step2Content() {
   const [selectedProducts, setSelectedProducts] = useState<string[]>([]);
   const [files, setFiles] = useState<File[]>([]);
 
-  // Mock products from Figma - single row layout
+  // Mock products from Figma
   const mockProducts = [
     { id: '1', name: 'Summer Yeti Cooler...', type: 'Yeti Cooler', date: 'Created 8/25/25' },
     { id: '2', name: 'Yeti Cooler', type: 'Yeti Cooler', date: 'Created 8/25/25' },
@@ -24,7 +24,6 @@ export default function Step2Content() {
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
     const selectedFiles = Array.from(event.target.files || []);
-    // Add to existing files instead of replacing
     setFiles(prev => [...prev, ...selectedFiles]);
   };
 
@@ -33,10 +32,7 @@ export default function Step2Content() {
   };
 
   const handleNext = () => {
-    // Start processing
     setCurrentState('processing');
-    
-    // Simulate loading/processing time
     setTimeout(() => {
       setCurrentState('review');
     }, 3000);
@@ -45,7 +41,6 @@ export default function Step2Content() {
   const handleFinalNext = () => {
     dispatch({ type: 'COMPLETE_STEP', payload: 2 });
     dispatch({ type: 'SET_STEP', payload: 3 });
-    // Smooth scroll to next section
     const step3Element = document.querySelector('[data-step="3"]');
     step3Element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
@@ -57,7 +52,6 @@ export default function Step2Content() {
     }
     
     dispatch({ type: 'SET_STEP', payload: 1 });
-    // Smooth scroll to previous section
     const step1Element = document.querySelector('[data-step="1"]');
     step1Element?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
@@ -68,16 +62,20 @@ export default function Step2Content() {
       <div 
         data-step="2"
         style={{
-          width: '100%',
-          backgroundColor: '#ffffff',
-          borderRadius: '16px',
-          padding: '40px',
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
-          border: '1px solid #e5e7eb',
-        }}
+            width: '100%',
+            maxWidth: '1000px',
+            backgroundColor: '#ffffff',
+            borderRadius: '16px',
+            padding: '40px',
+            boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            border: '1px solid #e5e7eb',
+            boxSizing: 'border-box' as const,
+            margin: '0 auto',
+          }}
+                        
       >
         {/* Header */}
-        <div style={{ marginBottom: '32px' }}>
+        <div style={{ marginBottom: '28px' }}>
           <h2 style={{
             fontSize: '24px',
             fontWeight: '700',
@@ -91,6 +89,7 @@ export default function Step2Content() {
             fontSize: '16px',
             color: '#6b7280',
             margin: 0,
+            lineHeight: '1.5',
           }}>
             Upload a file or paste a link - we'll pull the product and campaign details for you.
           </p>
@@ -162,6 +161,7 @@ export default function Step2Content() {
                   border: '1px solid #d1d5db',
                   borderRadius: '8px',
                   fontSize: '14px',
+                  boxSizing: 'border-box',
                 }}
               />
             </div>
@@ -308,7 +308,6 @@ export default function Step2Content() {
                     transition: 'all 0.2s ease',
                   }}
                 >
-                  {/* Product Image Placeholder */}
                   <div style={{
                     width: '48px',
                     height: '48px',
@@ -322,7 +321,6 @@ export default function Step2Content() {
                     <span style={{ fontSize: '20px' }}>📦</span>
                   </div>
 
-                  {/* Product Info */}
                   <div style={{ flex: 1 }}>
                     <h4 style={{
                       fontSize: '14px',
@@ -342,7 +340,6 @@ export default function Step2Content() {
                     </p>
                   </div>
 
-                  {/* Selection Indicator */}
                   <div style={{
                     width: '20px',
                     height: '20px',
@@ -423,15 +420,17 @@ export default function Step2Content() {
         data-step="2"
         style={{
           width: '100%',
+          maxWidth: '700px',
           backgroundColor: '#ffffff',
           borderRadius: '16px',
           padding: '60px 40px',
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
           border: '1px solid #e5e7eb',
           textAlign: 'center',
+          margin: '0 auto',
+          boxSizing: 'border-box',
         }}
       >
-        {/* Loading Animation */}
         <div style={{
           width: '80px',
           height: '80px',
@@ -474,27 +473,15 @@ export default function Step2Content() {
           gap: '4px',
           marginBottom: '24px',
         }}>
-          <div style={{
-            width: '8px',
-            height: '8px',
-            backgroundColor: '#8b5cf6',
-            borderRadius: '50%',
-            animation: 'pulse 1.5s ease-in-out infinite',
-          }} />
-          <div style={{
-            width: '8px',
-            height: '8px',
-            backgroundColor: '#8b5cf6',
-            borderRadius: '50%',
-            animation: 'pulse 1.5s ease-in-out 0.5s infinite',
-          }} />
-          <div style={{
-            width: '8px',
-            height: '8px',
-            backgroundColor: '#8b5cf6',
-            borderRadius: '50%',
-            animation: 'pulse 1.5s ease-in-out 1s infinite',
-          }} />
+          {[0, 1, 2].map((i) => (
+            <div key={i} style={{
+              width: '8px',
+              height: '8px',
+              backgroundColor: '#8b5cf6',
+              borderRadius: '50%',
+              animation: `pulse 1.5s ease-in-out ${i * 0.5}s infinite`,
+            }} />
+          ))}
         </div>
 
         <style jsx>{`
@@ -511,18 +498,21 @@ export default function Step2Content() {
     );
   }
 
-  // Review State
+  // Review State - This matches your current layout exactly
   if (currentState === 'review') {
     return (
       <div 
         data-step="2"
         style={{
           width: '100%',
+          maxWidth: '900px',
           backgroundColor: '#ffffff',
           borderRadius: '16px',
-          padding: '40px',
-          boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+          padding: '32px',
+          boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
           border: '1px solid #e5e7eb',
+          margin: '0 auto',
+          boxSizing: 'border-box',
         }}
       >
         {/* Header */}
@@ -540,6 +530,7 @@ export default function Step2Content() {
             fontSize: '16px',
             color: '#6b7280',
             margin: 0,
+            lineHeight: '1.5',
           }}>
             We've pulled product info and campaign rules from your files. Review and edit if needed.
           </p>
@@ -549,32 +540,27 @@ export default function Step2Content() {
         <div style={{
           display: 'grid',
           gridTemplateColumns: '1fr 1fr',
-          gap: '32px',
-          marginBottom: '32px',
+          gap: '48px',
+          marginBottom: '40px',
         }}>
           {/* Product Information */}
           <div>
             <h3 style={{
               fontSize: '18px',
-              fontWeight: '600',
+              fontWeight: '700',
               color: '#1f2937',
-              marginBottom: '16px',
+              marginBottom: '24px',
               margin: 0,
             }}>
               Product Information
             </h3>
             
-            <div style={{
-              backgroundColor: '#f9fafb',
-              padding: '16px',
-              borderRadius: '8px',
-              marginBottom: '16px',
-            }}>
+            <div style={{ marginBottom: '24px' }}>
               <h4 style={{
-                fontSize: '16px',
-                fontWeight: '600',
+                fontSize: '18px',
+                fontWeight: '700',
                 color: '#1f2937',
-                marginBottom: '8px',
+                marginBottom: '16px',
                 margin: 0,
               }}>
                 YETI Cooler 50
@@ -582,7 +568,7 @@ export default function Step2Content() {
               <p style={{
                 fontSize: '14px',
                 color: '#6b7280',
-                lineHeight: '1.5',
+                lineHeight: '1.6',
                 margin: 0,
               }}>
                 Experience unmatched cooling performance with the YETI Cooler 50. Built with rotomolded construction for superior durability, this premium cooler keeps ice frozen for days and bears the intimidation test. Whether camping or tailgating, the YETI Cooler ensures your refreshments stay icy cold for the duration of your adventures.
@@ -591,10 +577,10 @@ export default function Step2Content() {
 
             <div>
               <h5 style={{
-                fontSize: '14px',
-                fontWeight: '600',
+                fontSize: '16px',
+                fontWeight: '700',
                 color: '#1f2937',
-                marginBottom: '8px',
+                marginBottom: '12px',
                 margin: 0,
               }}>
                 Key Features:
@@ -604,11 +590,12 @@ export default function Step2Content() {
                 color: '#6b7280',
                 paddingLeft: '20px',
                 margin: 0,
+                lineHeight: '1.6',
               }}>
-                <li>Rotomolded construction for superior durability</li>
-                <li>Keeps ice frozen for up to 5 days in normal conditions</li>
-                <li>Heavy-duty rubber latches and stainless steel hardware</li>
-                <li>No-slip feet and comfortable carrying handles</li>
+                <li style={{ marginBottom: '4px' }}>Rotomolded construction for superior durability</li>
+                <li style={{ marginBottom: '4px' }}>Keeps ice frozen for up to 5 days in normal conditions</li>
+                <li style={{ marginBottom: '4px' }}>Heavy-duty rubber latches and stainless steel hardware</li>
+                <li style={{ marginBottom: '0' }}>No-slip feet and comfortable carrying handles</li>
               </ul>
             </div>
           </div>
@@ -617,162 +604,73 @@ export default function Step2Content() {
           <div>
             <h3 style={{
               fontSize: '18px',
-              fontWeight: '600',
+              fontWeight: '700',
               color: '#1f2937',
-              marginBottom: '16px',
+              marginBottom: '24px',
               margin: 0,
             }}>
               Campaign Rules
             </h3>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
-              <div style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '12px',
-              }}>
-                <div style={{
-                  width: '24px',
-                  height: '24px',
-                  backgroundColor: '#10b981',
-                  borderRadius: '50%',
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+              {[
+                {
+                  title: 'Post must include @yeti tag and #YETIPartner hashtag',
+                  subtitle: 'Required for campaign compliance and tracking'
+                },
+                {
+                  title: 'Content must showcase cooler in outdoor adventure setting',
+                  subtitle: 'Camping, fishing, tailgating, or similar activities'
+                },
+                {
+                  title: 'Minimum 1000 words in caption describing the experience',
+                  subtitle: 'Detailed review helps drive authentic engagement'
+                },
+                {
+                  title: 'Submit post within 30 days of product delivery',
+                  subtitle: 'Campaign timeline ensures timely content delivery'
+                }
+              ].map((rule, index) => (
+                <div key={index} style={{
                   display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: '2px',
+                  alignItems: 'flex-start',
+                  gap: '12px',
                 }}>
-                  <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
-                </div>
-                <div>
-                  <p style={{
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    color: '#1f2937',
-                    margin: 0,
-                    marginBottom: '4px',
+                  <div style={{
+                    width: '20px',
+                    height: '20px',
+                    backgroundColor: '#10b981',
+                    borderRadius: '50%',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    marginTop: '2px',
+                    flexShrink: 0,
                   }}>
-                    Post must include @yeti tag and #YETIPartner hashtag
-                  </p>
-                  <p style={{
-                    fontSize: '12px',
-                    color: '#6b7280',
-                    margin: 0,
-                  }}>
-                    Required for campaign compliance and tracking
-                  </p>
+                    <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
+                  </div>
+                  <div>
+                    <p style={{
+                      fontSize: '14px',
+                      fontWeight: '600',
+                      color: '#1f2937',
+                      margin: 0,
+                      marginBottom: '4px',
+                      lineHeight: '1.4',
+                    }}>
+                      {rule.title}
+                    </p>
+                    <p style={{
+                      fontSize: '12px',
+                      color: '#6b7280',
+                      margin: 0,
+                      lineHeight: '1.4',
+                    }}>
+                      {rule.subtitle}
+                    </p>
+                  </div>
                 </div>
-              </div>
-
-              <div style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '12px',
-              }}>
-                <div style={{
-                  width: '24px',
-                  height: '24px',
-                  backgroundColor: '#10b981',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: '2px',
-                }}>
-                  <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
-                </div>
-                <div>
-                  <p style={{
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    color: '#1f2937',
-                    margin: 0,
-                    marginBottom: '4px',
-                  }}>
-                    Content must showcase cooler in outdoor adventure setting
-                  </p>
-                  <p style={{
-                    fontSize: '12px',
-                    color: '#6b7280',
-                    margin: 0,
-                  }}>
-                    Camping, fishing, tailgating, or similar activities
-                  </p>
-                </div>
-              </div>
-
-              <div style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '12px',
-              }}>
-                <div style={{
-                  width: '24px',
-                  height: '24px',
-                  backgroundColor: '#10b981',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: '2px',
-                }}>
-                  <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
-                </div>
-                <div>
-                  <p style={{
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    color: '#1f2937',
-                    margin: 0,
-                    marginBottom: '4px',
-                  }}>
-                    Minimum 1000 words in caption describing the experience
-                  </p>
-                  <p style={{
-                    fontSize: '12px',
-                    color: '#6b7280',
-                    margin: 0,
-                  }}>
-                    Detailed review helps drive authentic engagement
-                  </p>
-                </div>
-              </div>
-
-              <div style={{
-                display: 'flex',
-                alignItems: 'flex-start',
-                gap: '12px',
-              }}>
-                <div style={{
-                  width: '24px',
-                  height: '24px',
-                  backgroundColor: '#10b981',
-                  borderRadius: '50%',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  marginTop: '2px',
-                }}>
-                  <span style={{ color: 'white', fontSize: '12px' }}>✓</span>
-                </div>
-                <div>
-                  <p style={{
-                    fontSize: '14px',
-                    fontWeight: '500',
-                    color: '#1f2937',
-                    margin: 0,
-                    marginBottom: '4px',
-                  }}>
-                    Submit post within 30 days of product delivery
-                  </p>
-                  <p style={{
-                    fontSize: '12px',
-                    color: '#6b7280',
-                    margin: 0,
-                  }}>
-                    Campaign timeline ensures timely content delivery
-                  </p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -781,6 +679,7 @@ export default function Step2Content() {
         <div style={{
           display: 'flex',
           justifyContent: 'space-between',
+          alignItems: 'center',
         }}>
           <button
             onClick={handleBack}

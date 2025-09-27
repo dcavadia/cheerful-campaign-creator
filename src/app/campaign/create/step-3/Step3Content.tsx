@@ -30,30 +30,34 @@ export default function Step3Content() {
       data-step="3"
       style={{
         width: '100%',
+        maxWidth: '850px',
         backgroundColor: '#ffffff',
         borderRadius: '16px',
         padding: '40px',
-        boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+        boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
         border: '1px solid #e5e7eb',
-      }}
+        boxSizing: 'border-box',
+        margin: '0 auto',
+      }}    
     >
       {/* Header */}
-      <div style={{ marginBottom: '32px' }}>
-        <h2 style={{
-          fontSize: '24px',
-          fontWeight: '700',
-          color: '#1f2937',
-          marginBottom: '8px',
-          margin: 0,
-        }}>
-          3. Add Integrations
-        </h2>
-        <p style={{
-          fontSize: '16px',
-          color: '#6b7280',
-          margin: 0,
-        }}>
-          Connect your tools to save time and reduce manual work.
+    <div style={{ marginBottom: '36px', textAlign: 'center' }}>
+      <h2 style={{
+        fontSize: '28px',
+        fontWeight: '700',
+        color: '#1f2937',
+        marginBottom: '12px',
+        margin: 0,
+      }}>
+        3. Add Integrations
+      </h2>
+      <p style={{
+        fontSize: '16px',
+        color: '#6b7280',
+        margin: 0,
+        lineHeight: '1.5',
+      }}>
+        Connect your tools to save time and reduce manual work.
         </p>
       </div>
 
