@@ -29,3 +29,77 @@
 ## 🚀 Getting Started
 
 1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/dcavadia/cheerful-campaign-creator
+   cd cheerful-campaign-creator
+   ```
+
+1. **Install dependencies:**
+   
+   ```bash
+   npm install
+   ```
+2. **Run the development server:**
+
+
+   ```bash
+   npm run dev
+   ```
+
+   - Then, open your browser: http://localhost:3000.
+
+## ✨ Features
+
+- **🎨 Modern UI/UX:** Clean, responsive design with smooth animations and transitions
+- **📱 Multi-Step Wizard:** Intuitive 4-step campaign creation process with progress tracking
+- **🔄 Smooth Navigation:** Seamless scrolling between steps with progress indicator
+- **📤 File Upload:** Drag-and-drop file upload with support for multiple file types
+- **🔗 URL Integration:** Product URL scanning for automatic campaign information extraction
+- **⚙️ Smart Integrations:** Google Sheets and Shopify integration setup
+- **📧 Email Automation:** Complete email campaign setup with template generation
+- **🎯 Campaign Types:** Support for Seeding/Gifting, Paid Promotion, and custom campaigns
+- **📊 Real-time Preview:** Live preview of campaign rules and product information
+- **💾 State Management:** Persistent campaign state throughout the creation process
+- **🔍 Loading States:** Engaging loading animations for better user experience
+- **📱 Responsive Design:** Fully optimized for desktop, tablet, and mobile devices
+
+## 🗂️ Project Structure
+
+```
+src/
+├── app/
+│   ├── campaign/
+│   │   ├── layout.tsx              # Campaign layout with sidebar
+│   │   └── create/
+│   │       ├── page.tsx            # Main campaign creation page
+│   │       ├── step-1/
+│   │       │   └── Step1Content.tsx # Campaign type selection
+│   │       ├── step-2/
+│   │       │   └── Step2Content.tsx # Campaign information & file upload
+│   │       ├── step-3/
+│   │       │   └── Step3Content.tsx # Integrations setup
+│   │       └── step-4/
+│   │           └── Step4Content.tsx # Email setup & review
+│   ├── globals.css                 # Global styles
+│   ├── layout.tsx                  # Root layout
+│   └── page.tsx                    # Home page with redirect
+├── components/
+│   └── campaign/
+│       └── ProgressIndicator.tsx   # Step progress indicator
+├── hooks/
+│   └── useCampaign.tsx            # Campaign state management
+└── types/
+    └── campaign.ts                 # TypeScript type definitions
+```
+
+## 🛠 Tech Stack
+
+- **Frontend Framework:** Next.js 14 with App Router
+- **Language:** TypeScript for type safety
+- **UI Library:** React with custom CSS-in-JS styling
+- **State Management:** React Context API with useReducer
+- **File Handling:** Native File API with drag-and-drop support
+- **Animation:** CSS transitions and keyframe animations
+- **Layout:** CSS Flexbox and Grid for responsive design
+- **Development:** Hot reload with Next.js development server
